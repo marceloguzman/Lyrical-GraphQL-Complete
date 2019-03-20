@@ -6,7 +6,8 @@ This is the completed project from ["GraphQL with React: The Complete Developers
 
   - packages updated to avoid the $PushAll issue [(Github link)](https://github.com/StephenGrider/Lyrical-GraphQL/issues/17) 
   - Some extra CSS added to style the app
-  - I made some changes to set all queries from the queries folder 
+  - I made some changes to set all queries from the queries folder
+  - Tidying up code using [prettier.io](https://prettier.io/)
 
 ### Installation
 
