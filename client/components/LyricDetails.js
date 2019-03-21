@@ -1,8 +1,25 @@
 import React, { Component } from "react";
+import { graphql } from "react-apollo";
+
+import likeLyric from "../queries/likeLyric";
 
 class LyricDetails extends Component {
-	deleteLyric(LyricId) {
-		console.log(LyricId);
+	likeLyric(LyricId, likes) {
+		console.log("like to: ", LyricId);
+		this.props.mutate({
+			variables: {
+				id: LyricId
+			},
+
+			optimisticResponse: {
+				typename: "Mutation",
+				likeLyric: {
+					id: LyricId,
+					_typename: "LyricType",
+					likes: likes + 1
+				}
+			}
+		});
 	}
 
 	renderLyrics() {
@@ -12,23 +29,16 @@ class LyricDetails extends Component {
 			return (
 				<li key={item.id} className="collection-item">
 					{item.content}
-
-					<div>
-						{item.likes}
-
-						<i
-							onClick={() => this.deleteLyric(item.id)}
-							className="material-icons"
-						>
-							thumb-up
-						</i>
-
-						<i
-							onClick={() => this.deleteLyric(item.id)}
-							className="material-icons"
-						>
-							delete
-						</i>
+					<div className="flex">
+						<div className="likes">
+							{item.likes}
+							<i
+								onClick={() => this.likeLyric(item.id, item.likes)}
+								className="material-icons"
+							>
+								thumb_up
+							</i>
+						</div>
 					</div>
 				</li>
 			);
@@ -37,7 +47,7 @@ class LyricDetails extends Component {
 
 	render() {
 		//console.log(this.props.lyricsList);
-		
+
 		return (
 			<div>
 				<ul className="collection">{this.renderLyrics()}</ul>
@@ -46,4 +56,4 @@ class LyricDetails extends Component {
 	}
 }
 
-export default LyricDetails;
+export default graphql(likeLyric)(LyricDetails);
