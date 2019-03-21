@@ -18,3 +18,10 @@ $ npm install
 $ cd client
 $ npm run dev
 ```
+
+
+### Images
+
+![Main Screen](https://raw.githubusercontent.com/marceloguzman/Lyrical-GraphQL-Complete/master/screens/Screen1.png "Main Screen")
+
+![Adding song Lyrics](https://raw.githubusercontent.com/marceloguzman/Lyrical-GraphQL-Complete/master/screens/Screen2.png "Adding song Lyrics")
